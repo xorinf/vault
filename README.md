@@ -4,7 +4,7 @@ Study Vault is a collaborative college resource sharing platform. Students can u
 
 ## Project Structure
 
-This project is organized as a monorepo:
+This project is organized as a monorepo::
 ```
 vault/
 ├── vault-backend/    # Express API backend with MongoDB & Cloudinary
