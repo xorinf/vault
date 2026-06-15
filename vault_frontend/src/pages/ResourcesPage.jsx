@@ -163,8 +163,8 @@ export default function ResourcesPage() {
             <>
               <div className={
                 viewMode === 'grid'
-                  ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-4'
-                  : 'space-y-3'
+                  ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6'
+                  : 'space-y-4'
               }>
                 {paginatedResources.map((resource) => (
                   <ResourceCard key={resource._id} resource={resource} />

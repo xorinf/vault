@@ -51,7 +51,7 @@ export default function AdminDashboard() {
         <p className="text-sm text-muted">Manage users and resources</p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
         {cards.map((card) => {
           const Icon = card.icon;
           return (
@@ -73,7 +73,7 @@ export default function AdminDashboard() {
         })}
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <Link
           to="/admin/users"
           className="bg-surface rounded-xl border border-border p-6 hover:shadow-card hover:border-accent/30 transition-all flex items-center gap-4"

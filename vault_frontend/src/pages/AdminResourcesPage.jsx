@@ -96,7 +96,7 @@ export default function AdminResourcesPage() {
       {loading ? (
         <div className="py-20"><Spinner size={32} text="Loading..." /></div>
       ) : (
-        <div className="space-y-2">
+        <div className="space-y-4">
           {filteredResources.map((resource) => (
             <div
               key={resource._id}

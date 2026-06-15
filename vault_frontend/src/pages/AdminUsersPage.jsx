@@ -81,32 +81,32 @@ export default function AdminUsersPage() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-border bg-hover/50">
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-muted uppercase">User</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-muted uppercase">Email</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-muted uppercase">College</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-muted uppercase">Joined</th>
-                  <th className="text-left px-4 py-3 text-xs font-semibold text-muted uppercase">Status</th>
-                  <th className="text-right px-4 py-3 text-xs font-semibold text-muted uppercase">Action</th>
+                  <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase">User</th>
+                  <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase">Email</th>
+                  <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase">College</th>
+                  <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase">Joined</th>
+                  <th className="text-left px-6 py-4 text-xs font-semibold text-muted uppercase">Status</th>
+                  <th className="text-right px-6 py-4 text-xs font-semibold text-muted uppercase">Action</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-border">
                 {filteredUsers.map((user) => (
                   <tr key={user._id} className="hover:bg-hover/50 transition-colors">
-                    <td className="px-4 py-3">
+                    <td className="px-6 py-4">
                       <div className="flex items-center gap-2">
                         <Avatar src={user.avatar} name={user.username} size="sm" />
                         <span className="font-medium text-heading">{user.username}</span>
                       </div>
                     </td>
-                    <td className="px-4 py-3 text-muted">{user.email}</td>
-                    <td className="px-4 py-3 text-muted">{user.college || '—'}</td>
-                    <td className="px-4 py-3 text-muted">{formatDate(user.createdAt)}</td>
-                    <td className="px-4 py-3">
+                    <td className="px-6 py-4 text-muted">{user.email}</td>
+                    <td className="px-6 py-4 text-muted">{user.college || '—'}</td>
+                    <td className="px-6 py-4 text-muted">{formatDate(user.createdAt)}</td>
+                    <td className="px-6 py-4">
                       <Badge variant={user.isUserActive ? 'success' : 'danger'}>
                         {user.isUserActive ? 'Active' : 'Blocked'}
                       </Badge>
                     </td>
-                    <td className="px-4 py-3 text-right">
+                    <td className="px-6 py-4 text-right">
                       <button
                         onClick={() => handleToggle(user._id)}
                         className={`inline-flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium transition-colors ${

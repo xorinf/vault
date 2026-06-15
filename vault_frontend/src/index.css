@@ -1,30 +1,30 @@
 @import "tailwindcss";
 
 @theme {
-  --color-bg: #F8F8F7;
+  --color-bg: #F9FAFB;
   --color-surface: #FFFFFF;
-  --color-border: #E4E4E3;
-  --color-muted: #9B9B98;
-  --color-text: #1A1A18;
-  --color-heading: #0D0D0C;
-  --color-accent: #2C2C2A;
-  --color-hover: #F2F2F0;
-  --color-tag: #EFEFED;
-  --color-danger: #DC2626;
-  --color-success: #16A34A;
+  --color-border: #E5E7EB;
+  --color-muted: #6B7280;
+  --color-text: #1F2937;
+  --color-heading: #111827;
+  --color-accent: #000000;
+  --color-hover: #F3F4F6;
+  --color-tag: #F3F4F6;
+  --color-danger: #EF4444;
+  --color-success: #10B981;
   --color-warning: #F59E0B;
 
   --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
 
-  --shadow-card: 0 1px 3px rgba(0,0,0,0.06), 0 1px 2px rgba(0,0,0,0.04);
-  --shadow-modal: 0 8px 32px rgba(0,0,0,0.10);
-  --shadow-elevated: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-card: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  --shadow-modal: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-elevated: 0 4px 6px -1px rgba(0, 0, 0, 0.03), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
 
-  --animate-fade-in: fade-in 0.2s ease-out;
-  --animate-slide-up: slide-up 0.3s ease-out;
-  --animate-slide-in-right: slide-in-right 0.3s ease-out;
-  --animate-scale-in: scale-in 0.15s ease-out;
+  --animate-fade-in: fade-in 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-up: slide-up 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-slide-in-right: slide-in-right 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  --animate-scale-in: scale-in 0.12s cubic-bezier(0.16, 1, 0.3, 1);
   --animate-pulse-soft: pulse-soft 2s ease-in-out infinite;
 }
 

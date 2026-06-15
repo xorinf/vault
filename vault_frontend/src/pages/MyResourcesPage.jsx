@@ -104,7 +104,7 @@ export default function MyResourcesPage() {
           onAction={filter === 'active' ? () => navigate('/upload') : undefined}
         />
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-4">
           {filteredResources.map((resource) => (
             <div
               key={resource._id}

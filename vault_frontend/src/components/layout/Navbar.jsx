@@ -72,7 +72,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-1">
+            <nav className="hidden md:flex items-center gap-2">
               {navLinks.map((link) => {
                 const Icon = link.icon;
                 const isActive = location.pathname === link.to;
@@ -80,7 +80,7 @@ export default function Navbar() {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className={`flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
                       isActive
                         ? 'bg-accent text-white'
                         : 'text-muted hover:text-heading hover:bg-hover'
@@ -92,13 +92,13 @@ export default function Navbar() {
                 );
               })}
             </nav>
-
+ 
             {/* Right section */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               {/* Search button */}
               <button
                 onClick={() => setSearchOpen(true)}
-                className="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border text-sm text-muted hover:border-accent hover:text-heading transition-colors"
+                className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-border text-sm text-muted hover:border-accent hover:text-heading transition-colors"
                 aria-label="Search resources"
               >
                 <Search size={15} />
@@ -107,7 +107,7 @@ export default function Navbar() {
                   ⌘K
                 </kbd>
               </button>
-
+ 
               {/* Pomodoro */}
               {isAuthenticated && (
                 <button
@@ -118,24 +118,24 @@ export default function Navbar() {
                   <Timer size={18} />
                 </button>
               )}
-
+ 
               {/* Upload */}
               {isAuthenticated && (
                 <Link
                   to="/upload"
-                  className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-accent text-white rounded-lg text-sm font-medium hover:bg-heading transition-colors"
+                  className="hidden sm:flex items-center gap-1.5 px-3.5 py-2 bg-accent text-white rounded-lg text-sm font-medium hover:bg-heading transition-colors"
                 >
                   <Upload size={15} />
                   Upload
                 </Link>
               )}
-
+ 
               {/* User menu / Auth */}
               {isAuthenticated ? (
                 <div className="relative" ref={userMenuRef}>
                   <button
                     onClick={() => setUserMenuOpen(!userMenuOpen)}
-                    className="flex items-center gap-2 p-1 rounded-lg hover:bg-hover transition-colors"
+                    className="flex items-center gap-2 p-1.5 rounded-lg hover:bg-hover transition-colors"
                     aria-label="User menu"
                   >
                     <Avatar src={user?.avatar} name={user?.username} size="sm" />
