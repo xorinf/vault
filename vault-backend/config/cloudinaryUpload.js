@@ -7,7 +7,7 @@ import cloudinary from "./cloudinary.js";
 export const uploadToCloudinary = (buffer) => {
   return new Promise((resolve, reject) => {
     const stream = cloudinary.uploader.upload_stream(
-      { folder: "vault_resources", resource_type: "auto" },
+      { folder: "vault", resource_type: "auto" },
       (err, result) => {
         if (err) return reject(err);
         resolve(result);
