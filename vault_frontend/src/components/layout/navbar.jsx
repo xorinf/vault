@@ -72,7 +72,7 @@ export default function Navbar() {
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-2">
+            <nav className="hidden md:flex items-center gap-1.5">
               {navLinks.map((link) => {
                 const Icon = link.icon;
                 const isActive = location.pathname === link.to;
@@ -80,13 +80,13 @@ export default function Navbar() {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className={`flex items-center gap-2 px-3.5 py-2 rounded-lg text-sm font-medium transition-colors ${
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
                       isActive
-                        ? 'bg-accent text-white'
-                        : 'text-muted hover:text-heading hover:bg-hover'
+                        ? 'bg-hover text-heading'
+                        : 'text-muted hover:text-heading hover:bg-hover/55'
                     }`}
                   >
-                    <Icon size={16} />
+                    <Icon size={15} />
                     {link.label}
                   </Link>
                 );
@@ -94,16 +94,18 @@ export default function Navbar() {
             </nav>
  
             {/* Right section */}
-            <div className="flex items-center gap-3">
+            <div className="flex items-center gap-4">
               {/* Search button */}
               <button
                 onClick={() => setSearchOpen(true)}
-                className="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-border text-sm text-muted hover:border-accent hover:text-heading transition-colors"
+                className="flex items-center justify-between w-44 px-3 py-1.5 rounded-lg border border-border bg-hover/40 text-xs text-muted hover:border-accent hover:text-heading transition-all cursor-pointer"
                 aria-label="Search resources"
               >
-                <Search size={15} />
-                <span className="hidden sm:inline">Search</span>
-                <kbd className="hidden sm:inline ml-2 px-1.5 py-0.5 rounded bg-hover text-[10px] font-mono text-muted">
+                <div className="flex items-center gap-2">
+                  <Search size={14} />
+                  <span>Search...</span>
+                </div>
+                <kbd className="hidden sm:inline-block px-1.5 py-0.5 rounded bg-surface border border-border text-[9px] font-mono font-medium text-muted">
                   ⌘K
                 </kbd>
               </button>
@@ -112,7 +114,7 @@ export default function Navbar() {
               {isAuthenticated && (
                 <button
                   onClick={() => setPomodoroOpen(true)}
-                  className="p-2 rounded-lg text-muted hover:text-heading hover:bg-hover transition-colors"
+                  className="p-2 rounded-lg text-muted hover:text-heading hover:bg-hover transition-colors cursor-pointer"
                   aria-label="Pomodoro timer"
                 >
                   <Timer size={18} />
@@ -123,9 +125,9 @@ export default function Navbar() {
               {isAuthenticated && (
                 <Link
                   to="/upload"
-                  className="hidden sm:flex items-center gap-1.5 px-3.5 py-2 bg-accent text-white rounded-lg text-sm font-medium hover:bg-heading transition-colors"
+                  className="hidden sm:flex items-center gap-1.5 px-4 py-2 bg-accent text-white rounded-lg text-sm font-semibold hover:bg-neutral-800 transition-colors shadow-sm"
                 >
-                  <Upload size={15} />
+                  <Upload size={14} />
                   Upload
                 </Link>
               )}
@@ -187,16 +189,16 @@ export default function Navbar() {
                   )}
                 </div>
               ) : (
-                <div className="flex items-center gap-2">
+                <div className="flex items-center gap-3">
                   <Link
                     to="/login"
-                    className="px-3 py-1.5 text-sm font-medium text-text hover:text-heading transition-colors"
+                    className="px-4 py-2 text-sm font-semibold text-muted hover:text-heading transition-colors"
                   >
                     Log in
                   </Link>
                   <Link
                     to="/register"
-                    className="px-3 py-1.5 bg-accent text-white rounded-lg text-sm font-medium hover:bg-heading transition-colors"
+                    className="px-4 py-2 bg-accent text-white rounded-lg text-sm font-semibold hover:bg-neutral-800 transition-colors shadow-sm"
                   >
                     Sign up
                   </Link>

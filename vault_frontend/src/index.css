@@ -95,9 +95,10 @@ body {
   border-radius: 4px;
 }
 
-/* Transitions */
+/* Transitions & Typography Inheritance */
 a, button, input, select, textarea {
   transition: all 0.15s ease-in-out;
+  font-family: inherit;
 }
 
 /* Selection */
