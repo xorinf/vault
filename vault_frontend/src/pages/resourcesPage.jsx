@@ -137,8 +137,8 @@ export default function ResourcesPage() {
         </div>
       </div>
 
-      {/* Content area */}
-      <div className="flex flex-col lg:flex-row gap-8 lg:gap-10">
+      {/* Unified Split-pane Workspace */}
+      <div className="bg-surface rounded-xl border border-border flex flex-col lg:flex-row overflow-hidden min-h-[calc(100vh-14rem)]">
         <Sidebar
           filters={filters}
           onFilterChange={setFilters}
@@ -146,9 +146,9 @@ export default function ResourcesPage() {
           onClose={() => setSidebarOpen(false)}
         />
 
-        <div className="flex-1 min-w-0">
+        <div className="flex-1 p-6 sm:p-8 min-w-0">
           {loading ? (
-            <div className="py-20">
+            <div className="py-20 flex items-center justify-center">
               <Spinner size={32} text="Loading resources..." />
             </div>
           ) : paginatedResources.length === 0 ? (
@@ -160,10 +160,10 @@ export default function ResourcesPage() {
               onAction={() => navigate('/upload')}
             />
           ) : (
-            <>
+            <div className="flex flex-col h-full justify-between gap-8">
               <div className={
                 viewMode === 'grid'
-                  ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8'
+                  ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6'
                   : 'space-y-4'
               }>
                 {paginatedResources.map((resource) => (
@@ -176,7 +176,7 @@ export default function ResourcesPage() {
                 totalPages={totalPages}
                 onPageChange={setCurrentPage}
               />
-            </>
+            </div>
           )}
         </div>
       </div>

@@ -63,6 +63,8 @@
 body {
   font-family: var(--font-sans);
   background-color: var(--color-bg);
+  background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
   color: var(--color-text);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

@@ -9,15 +9,18 @@ export default function Dashboard() {
   return (
     <PageWrapper>
       {/* Hero Section */}
-      <section className="py-24 sm:py-36 flex flex-col items-center text-center max-w-3xl mx-auto mb-24">
-        <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 bg-neutral-100 border border-border rounded-full text-xs font-semibold text-text mb-8 animate-fade-in">
-          <Zap size={12} className="text-heading" />
+      <section className="py-24 sm:py-36 flex flex-col items-center text-center max-w-3xl mx-auto mb-24 animate-fade-in">
+        <div className="inline-flex items-center gap-2.5 px-4 py-1.5 bg-surface border border-border rounded-full text-xs font-medium text-text mb-8 shadow-sm">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-neutral-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-neutral-900"></span>
+          </span>
           <span>Collaborative Study Vault</span>
         </div>
 
         <h1 className="text-5xl sm:text-6xl font-bold tracking-tight text-heading leading-tight mb-8">
           Share Knowledge.<br />
-          <span className="text-muted">Excel Together.</span>
+          <span className="font-light text-muted">Excel Together.</span>
         </h1>
 
         <p className="text-base sm:text-lg text-muted mb-10 max-w-xl leading-relaxed">
@@ -29,14 +32,14 @@ export default function Dashboard() {
             <>
               <Link
                 to="/resources"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-white rounded-lg font-semibold text-sm hover:bg-neutral-800 transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-white rounded-lg font-semibold text-sm hover:bg-neutral-800 hover:-translate-y-0.5 transition-all duration-150 shadow-sm"
               >
                 Browse Resources
                 <ArrowRight size={15} />
               </Link>
               <Link
                 to="/upload"
-                className="inline-flex items-center gap-1.5 px-6 py-3.5 border border-border text-heading bg-surface rounded-lg font-semibold text-sm hover:bg-hover transition-colors"
+                className="inline-flex items-center gap-1.5 px-6 py-3.5 border border-border text-heading bg-surface rounded-lg font-semibold text-sm hover:bg-hover hover:-translate-y-0.5 transition-all duration-150"
               >
                 <Upload size={15} />
                 Upload Material
@@ -46,14 +49,14 @@ export default function Dashboard() {
             <>
               <Link
                 to="/register"
-                className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-white rounded-lg font-semibold text-sm hover:bg-neutral-800 transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 px-6 py-3.5 bg-accent text-white rounded-lg font-semibold text-sm hover:bg-neutral-800 hover:-translate-y-0.5 transition-all duration-150 shadow-sm"
               >
                 Get Started
                 <ArrowRight size={15} />
               </Link>
               <Link
                 to="/login"
-                className="inline-flex items-center gap-1.5 px-6 py-3.5 border border-border text-heading bg-surface rounded-lg font-semibold text-sm hover:bg-hover transition-colors"
+                className="inline-flex items-center gap-1.5 px-6 py-3.5 border border-border text-heading bg-surface rounded-lg font-semibold text-sm hover:bg-hover hover:-translate-y-0.5 transition-all duration-150"
               >
                 Sign In
               </Link>
@@ -113,15 +116,15 @@ export default function Dashboard() {
             return (
               <div
                 key={feature.title}
-                className="group relative bg-surface rounded-xl border border-border p-8 hover:border-neutral-400 transition-colors duration-150"
+                className="group relative bg-surface rounded-xl border border-border p-8 hover:border-neutral-800 hover:-translate-y-0.5 transition-all duration-150"
               >
                 {feature.badge && (
                   <span className="absolute top-4 right-4 px-2 py-0.5 bg-neutral-100 text-muted text-[9px] font-semibold border border-border rounded-md uppercase tracking-wider">
                     {feature.badge}
                   </span>
                 )}
-                <div className="w-12 h-12 rounded-full bg-hover flex items-center justify-center mb-6 text-heading group-hover:bg-accent group-hover:text-white transition-all duration-200">
-                  <Icon size={20} />
+                <div className="w-11 h-11 rounded-lg border border-border bg-neutral-50 flex items-center justify-center mb-6 text-neutral-800 group-hover:bg-neutral-900 group-hover:text-white group-hover:border-transparent transition-all duration-200">
+                  <Icon size={18} />
                 </div>
                 <h3 className="text-lg font-semibold text-heading mb-2">{feature.title}</h3>
                 <p className="text-sm text-muted leading-relaxed">{feature.description}</p>

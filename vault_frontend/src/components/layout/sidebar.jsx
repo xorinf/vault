@@ -92,10 +92,8 @@ export default function Sidebar({ filters, onFilterChange, isOpen, onClose }) {
   return (
     <>
       {/* Desktop sidebar */}
-      <aside className="hidden lg:block w-60 shrink-0">
-        <div className="sticky top-20 bg-surface rounded-xl border border-border p-4">
-          {content}
-        </div>
+      <aside className="hidden lg:block w-64 border-r border-border p-6 shrink-0 bg-surface">
+        {content}
       </aside>
 
       {/* Mobile drawer */}
