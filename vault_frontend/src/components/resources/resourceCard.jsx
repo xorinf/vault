@@ -22,8 +22,8 @@ export default function ResourceCard({ resource }) {
       className="group block bg-surface rounded-xl border border-border hover:border-neutral-400 transition-colors duration-150"
     >
       {/* Card Header with file type indicator */}
-      <div className="px-5 pt-5 pb-3">
-        <div className="flex items-start justify-between gap-3 mb-3">
+      <div className="px-6 pt-6 pb-4">
+        <div className="flex items-start justify-between gap-3 mb-4">
           <div className="flex items-center gap-2">
             <Badge fileType={resource.fileType} />
             <span className="text-xs text-muted">{resource.subject}</span>
@@ -35,17 +35,17 @@ export default function ResourceCard({ resource }) {
           )}
         </div>
 
-        <h3 className="text-base font-semibold text-heading group-hover:text-accent transition-colors line-clamp-2 mb-1.5">
+        <h3 className="text-base font-semibold text-heading group-hover:text-accent transition-colors line-clamp-2 mb-2">
           {resource.title}
         </h3>
 
-        <p className="text-sm text-muted line-clamp-2 mb-3">
+        <p className="text-sm text-muted line-clamp-2 mb-4">
           {truncate(resource.description, 100)}
         </p>
 
         {/* Tags */}
         {resource.tags?.length > 0 && (
-          <div className="flex flex-wrap gap-1 mb-3">
+          <div className="flex flex-wrap gap-1.5 mb-4">
             {resource.tags.slice(0, 3).map((tag) => (
               <span key={tag} className="px-2 py-0.5 bg-tag rounded-md text-xs text-muted">
                 {tag}
@@ -59,7 +59,7 @@ export default function ResourceCard({ resource }) {
       </div>
 
       {/* Card Footer */}
-      <div className="px-5 py-3 border-t border-border flex items-center justify-between">
+      <div className="px-6 py-4 border-t border-border flex items-center justify-between">
         <div className="flex items-center gap-2">
           <Avatar
             src={resource.author?.avatar}

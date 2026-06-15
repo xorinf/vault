@@ -46,12 +46,12 @@ export default function Sidebar({ filters, onFilterChange, isOpen, onClose }) {
       {/* Subject Filter */}
       <div>
         <h3 className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">Subject</h3>
-        <div className="space-y-0.5">
+        <div className="space-y-1.5">
           {SUBJECTS.map((subject) => (
             <button
               key={subject}
               onClick={() => handleSubjectChange(subject)}
-              className={`w-full text-left px-3 py-1.5 rounded-lg text-sm transition-colors ${
+              className={`w-full text-left px-4 py-2 rounded-lg text-sm transition-colors ${
                 filters.subject === subject
                   ? 'bg-accent text-white font-medium'
                   : 'text-text hover:bg-hover'
@@ -66,12 +66,12 @@ export default function Sidebar({ filters, onFilterChange, isOpen, onClose }) {
       {/* File Type Filter */}
       <div>
         <h3 className="text-xs font-semibold text-muted uppercase tracking-wider mb-2">Type</h3>
-        <div className="space-y-0.5">
+        <div className="space-y-1.5">
           {Object.entries(FILE_TYPES).map(([key, config]) => (
             <button
               key={key}
               onClick={() => handleTypeChange(key)}
-              className={`w-full text-left flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm transition-colors ${
+              className={`w-full text-left flex items-center gap-2 px-4 py-2 rounded-lg text-sm transition-colors ${
                 filters.fileType === key
                   ? 'bg-accent text-white font-medium'
                   : 'text-text hover:bg-hover'

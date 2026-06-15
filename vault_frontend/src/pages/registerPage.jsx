@@ -68,7 +68,7 @@ export default function RegisterPage() {
           <p className="text-sm text-muted mt-1">Join Study Vault and start sharing resources</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-surface rounded-xl border border-border p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="bg-surface rounded-xl border border-border p-8 space-y-6">
           <div>
             <label htmlFor="reg-username" className="block text-sm font-medium text-heading mb-1.5">Username</label>
             <div className="relative">

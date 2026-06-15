@@ -85,11 +85,11 @@ export default function ResourceDetailPage() {
         Back
       </button>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
         {/* Main content */}
         <div className="lg:col-span-2 space-y-6">
           {/* Resource header */}
-          <div className="bg-surface rounded-xl border border-border p-6">
+          <div className="bg-surface rounded-xl border border-border p-8">
             <div className="flex items-start gap-4">
               <VoteWidget
                 score={score}
@@ -144,7 +144,7 @@ export default function ResourceDetailPage() {
 
           {/* File preview / content */}
           <div className="bg-surface rounded-xl border border-border overflow-hidden">
-            <div className="px-6 py-3 border-b border-border flex items-center justify-between">
+            <div className="px-8 py-5 border-b border-border flex items-center justify-between">
               <h2 className="text-sm font-semibold text-heading">Preview</h2>
               {resource.fileUrl && (
                 <a
@@ -158,7 +158,7 @@ export default function ResourceDetailPage() {
                 </a>
               )}
             </div>
-            <div className="p-6">
+            <div className="p-8">
               {isImage && resource.fileUrl && (
                 <img
                   src={resource.fileUrl}
@@ -198,14 +198,14 @@ export default function ResourceDetailPage() {
 
           {/* Comments section */}
           <div className="bg-surface rounded-xl border border-border">
-            <div className="px-6 py-3 border-b border-border">
+            <div className="px-8 py-5 border-b border-border">
               <h2 className="text-sm font-semibold text-heading">
                 Comments ({resource.comments?.length || 0})
               </h2>
             </div>
 
             {/* Comment form */}
-            <form onSubmit={handleComment} className="px-6 py-4 border-b border-border">
+            <form onSubmit={handleComment} className="px-8 py-6 border-b border-border">
               <div className="flex gap-3">
                 <Avatar src={user?.avatar} name={user?.username} size="sm" />
                 <div className="flex-1 flex gap-2">
@@ -236,10 +236,10 @@ export default function ResourceDetailPage() {
                 </div>
               )}
               {resource.comments?.map((c, i) => (
-                <div key={c._id || i} className="px-6 py-4 flex gap-3">
+                <div key={c._id || i} className="px-8 py-5 flex gap-4">
                   <Avatar src={c.user?.avatar} name={c.user?.username} size="sm" />
                   <div>
-                    <div className="flex items-center gap-2 mb-0.5">
+                    <div className="flex items-center gap-2 mb-1">
                       <span className="text-sm font-medium text-heading">{c.user?.username || 'User'}</span>
                     </div>
                     <p className="text-sm text-text">{c.comment}</p>
@@ -251,9 +251,9 @@ export default function ResourceDetailPage() {
         </div>
 
         {/* Sidebar - Author info */}
-        <div className="space-y-4">
-          <div className="bg-surface rounded-xl border border-border p-5">
-            <h3 className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Uploaded by</h3>
+        <div className="space-y-6">
+          <div className="bg-surface rounded-xl border border-border p-6">
+            <h3 className="text-xs font-semibold text-muted uppercase tracking-wider mb-4">Uploaded by</h3>
             <div className="flex items-center gap-3">
               <Avatar src={resource.author?.avatar} name={resource.author?.username} size="lg" />
               <div>
@@ -263,9 +263,9 @@ export default function ResourceDetailPage() {
             </div>
           </div>
 
-          <div className="bg-surface rounded-xl border border-border p-5">
-            <h3 className="text-xs font-semibold text-muted uppercase tracking-wider mb-3">Details</h3>
-            <div className="space-y-2 text-sm">
+          <div className="bg-surface rounded-xl border border-border p-6">
+            <h3 className="text-xs font-semibold text-muted uppercase tracking-wider mb-4">Details</h3>
+            <div className="space-y-4 text-sm">
               <div className="flex justify-between">
                 <span className="text-muted">Subject</span>
                 <span className="text-heading font-medium">{resource.subject}</span>

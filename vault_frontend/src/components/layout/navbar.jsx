@@ -60,7 +60,7 @@ export default function Navbar() {
     <>
       <header className="sticky top-0 z-40 bg-surface/80 backdrop-blur-lg border-b border-border">
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
-          <div className="flex items-center justify-between h-16">
+          <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link to="/" className="flex items-center gap-2.5 shrink-0">
               <div className="w-8 h-8 bg-accent rounded-lg flex items-center justify-center">
@@ -80,7 +80,7 @@ export default function Navbar() {
                   <Link
                     key={link.to}
                     to={link.to}
-                    className={`flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-semibold transition-all ${
+                    className={`flex items-center gap-2.5 px-5 py-2.5 rounded-lg text-sm font-semibold transition-all ${
                       isActive
                         ? 'bg-hover text-heading'
                         : 'text-muted hover:text-heading hover:bg-hover/55'
@@ -94,11 +94,11 @@ export default function Navbar() {
             </nav>
  
             {/* Right section */}
-            <div className="flex items-center gap-4">
+             <div className="flex items-center gap-6">
               {/* Search button */}
               <button
                 onClick={() => setSearchOpen(true)}
-                className="flex items-center justify-between w-44 px-3 py-1.5 rounded-lg border border-border bg-hover/40 text-xs text-muted hover:border-accent hover:text-heading transition-all cursor-pointer"
+                 className="flex items-center justify-between w-52 px-4 py-2.5 rounded-lg border border-border bg-hover/40 text-xs text-muted hover:border-neutral-400 hover:text-heading transition-all cursor-pointer"
                 aria-label="Search resources"
               >
                 <div className="flex items-center gap-2">

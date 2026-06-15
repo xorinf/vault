@@ -138,7 +138,7 @@ export default function ResourcesPage() {
       </div>
 
       {/* Content area */}
-      <div className="flex gap-6">
+      <div className="flex flex-col lg:flex-row gap-8 lg:gap-10">
         <Sidebar
           filters={filters}
           onFilterChange={setFilters}
@@ -163,7 +163,7 @@ export default function ResourcesPage() {
             <>
               <div className={
                 viewMode === 'grid'
-                  ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6'
+                  ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-8'
                   : 'space-y-4'
               }>
                 {paginatedResources.map((resource) => (

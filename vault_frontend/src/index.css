@@ -108,6 +108,27 @@ a, button, input, select, textarea {
 }
 
 /* Global Monochrome Form Overrides */
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+select,
+textarea {
+  padding-top: 0.75rem !important;  /* ~12px padding top/bottom */
+  padding-bottom: 0.75rem !important;
+  padding-left: 1.125rem !important; /* ~18px padding left/right */
+  padding-right: 1.125rem !important;
+  line-height: 1.5 !important;
+  border-radius: 8px !important;
+}
+
+/* Adjust paddings for absolute icons positioned left in input boxes */
+.relative > input[type="text"].pl-10,
+.relative > input[type="email"].pl-10,
+.relative > input[type="password"].pl-10 {
+  padding-left: 2.75rem !important; /* Keep room for Lucide icons */
+}
+
 input:focus, select:focus, textarea:focus {
   border-color: var(--color-accent) !important;
   box-shadow: 0 0 0 1px var(--color-accent) !important;

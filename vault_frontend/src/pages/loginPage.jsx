@@ -58,7 +58,7 @@ export default function LoginPage() {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="bg-surface rounded-xl border border-border p-6 space-y-4">
+        <form onSubmit={handleSubmit} className="bg-surface rounded-xl border border-border p-8 space-y-6">
           <div>
             <label htmlFor="login-email" className="block text-sm font-medium text-heading mb-1.5">
               Email
