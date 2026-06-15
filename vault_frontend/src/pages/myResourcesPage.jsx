@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Edit3, Trash2, RotateCcw, Eye, ThumbsUp, MessageSquare, FileText, Image, StickyNote, Plus } from 'lucide-react';
-import PageWrapper from '../components/layout/PageWrapper';
-import Badge from '../components/ui/Badge';
-import Spinner from '../components/ui/Spinner';
-import EmptyState from '../components/ui/EmptyState';
-import { getMyResources, deleteResource, restoreResource } from '../api/resources.api';
+import PageWrapper from '../components/layout/pageWrapper';
+import Badge from '../components/ui/badge';
+import Spinner from '../components/ui/spinner';
+import EmptyState from '../components/ui/emptyState';
+import { getMyResources, deleteResource, restoreResource } from '../api/resourcesApi';
 import { useAuth } from '../hooks/useAuth';
 import { useToast } from '../hooks/useToast';
 import { formatRelativeTime, formatScore } from '../utils/formatters';

@@ -1,5 +1,5 @@
 import exp from 'express';
-import { userModel } from '../models/UserModel.js';
+import { userModel } from '../models/userModel.js';
 import { hash, compare } from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import { config } from 'dotenv';

@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { BookOpen, Upload, Search, Users, ArrowRight, Zap, Shield, Globe } from 'lucide-react';
-import PageWrapper from '../components/layout/PageWrapper';
+import PageWrapper from '../components/layout/pageWrapper';
 import { useAuth } from '../hooks/useAuth';
 
 export default function Dashboard() {

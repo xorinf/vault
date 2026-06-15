@@ -1,6 +1,6 @@
 import exp from 'express';
-import { resourceModel } from '../models/ResourceModel.js';
-import { userModel } from '../models/UserModel.js';
+import { resourceModel } from '../models/resourceModel.js';
+import { userModel } from '../models/userModel.js';
 import { verifyToken } from '../middlewares/verifyToken.js';
 import { upload } from '../config/multer.js';
 import { uploadToCloudinary } from '../config/cloudinaryUpload.js';

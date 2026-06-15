@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Shield, UserCheck, UserX, Search } from 'lucide-react';
-import PageWrapper from '../components/layout/PageWrapper';
-import Avatar from '../components/ui/Avatar';
-import Badge from '../components/ui/Badge';
-import Spinner from '../components/ui/Spinner';
-import { getUsers, toggleUserStatus } from '../api/resources.api';
+import PageWrapper from '../components/layout/pageWrapper';
+import Avatar from '../components/ui/avatar';
+import Badge from '../components/ui/badge';
+import Spinner from '../components/ui/spinner';
+import { getUsers, toggleUserStatus } from '../api/resourcesApi';
 import { useAuth } from '../hooks/useAuth';
 import { useToast } from '../hooks/useToast';
 import { formatDate } from '../utils/formatters';

@@ -1,5 +1,5 @@
 import { createContext, useReducer, useEffect, useCallback } from 'react';
-import * as authAPI from '../api/auth.api';
+import * as authAPI from '../api/authApi';
 
 /** @type {React.Context} */
 export const AuthContext = createContext(null);

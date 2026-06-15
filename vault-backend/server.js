@@ -1,9 +1,9 @@
 import exp from "express";
 import { config } from "dotenv";
 import { connect } from "mongoose";
-import { studentAPP } from "./APIs/StudentAPI.js";
-import { adminAPP } from "./APIs/ResourceAPI.js";
-import { authAPP } from "./APIs/AuthAPI.js";
+import { studentAPP } from "./apis/studentApi.js";
+import { adminAPP } from "./apis/resourceApi.js";
+import { authAPP } from "./apis/authApi.js";
 import cookieParser from "cookie-parser";
 import cors from 'cors';
 

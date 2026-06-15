@@ -1,6 +1,6 @@
 import { Pencil, Construction } from 'lucide-react';
-import PageWrapper from '../components/layout/PageWrapper';
-import EmptyState from '../components/ui/EmptyState';
+import PageWrapper from '../components/layout/pageWrapper';
+import EmptyState from '../components/ui/emptyState';
 
 export default function WhiteboardPage() {
   return (

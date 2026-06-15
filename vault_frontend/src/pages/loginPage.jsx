@@ -4,7 +4,7 @@ import { BookOpen, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
 import { useToast } from '../hooks/useToast';
 import { validateEmail, validatePassword } from '../utils/validators';
-import Spinner from '../components/ui/Spinner';
+import Spinner from '../components/ui/spinner';
 
 export default function LoginPage() {
   const [form, setForm] = useState({ email: '', password: '' });

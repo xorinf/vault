@@ -1,6 +1,6 @@
 import exp from 'express';
-import { resourceModel } from '../models/ResourceModel.js';
-import { voteModel } from '../models/VoteModel.js';
+import { resourceModel } from '../models/resourceModel.js';
+import { voteModel } from '../models/voteModel.js';
 import { verifyToken } from '../middlewares/verifyToken.js';
 
 export const studentAPP = exp.Router();

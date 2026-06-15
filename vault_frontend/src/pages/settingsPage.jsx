@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Settings, Lock, Eye, EyeOff } from 'lucide-react';
-import PageWrapper from '../components/layout/PageWrapper';
-import Spinner from '../components/ui/Spinner';
-import { changePassword } from '../api/auth.api';
+import PageWrapper from '../components/layout/pageWrapper';
+import Spinner from '../components/ui/spinner';
+import { changePassword } from '../api/authApi';
 import { useAuth } from '../hooks/useAuth';
 import { useToast } from '../hooks/useToast';
 

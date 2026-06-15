@@ -1,25 +1,25 @@
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { AuthProvider } from './context/AuthContext';
-import { ToastProvider } from './context/ToastContext';
-import Navbar from './components/layout/Navbar';
-import ToastContainer from './components/ui/Toast';
+import { AuthProvider } from './context/authContext';
+import { ToastProvider } from './context/toastContext';
+import Navbar from './components/layout/navbar';
+import ToastContainer from './components/ui/toast';
 
 // Pages
-import Dashboard from './pages/Dashboard';
-import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
-import ResourcesPage from './pages/ResourcesPage';
-import ResourceDetailPage from './pages/ResourceDetailPage';
-import UploadPage from './pages/UploadPage';
-import MyResourcesPage from './pages/MyResourcesPage';
-import AdminDashboard from './pages/AdminDashboard';
-import AdminUsersPage from './pages/AdminUsersPage';
-import AdminResourcesPage from './pages/AdminResourcesPage';
-import SettingsPage from './pages/SettingsPage';
-import ForumPage from './pages/ForumPage';
-import WhiteboardPage from './pages/WhiteboardPage';
-import BookmarksPage from './pages/BookmarksPage';
-import LeaderboardPage from './pages/LeaderboardPage';
+import Dashboard from './pages/dashboard';
+import LoginPage from './pages/loginPage';
+import RegisterPage from './pages/registerPage';
+import ResourcesPage from './pages/resourcesPage';
+import ResourceDetailPage from './pages/resourceDetailPage';
+import UploadPage from './pages/uploadPage';
+import MyResourcesPage from './pages/myResourcesPage';
+import AdminDashboard from './pages/adminDashboard';
+import AdminUsersPage from './pages/adminUsersPage';
+import AdminResourcesPage from './pages/adminResourcesPage';
+import SettingsPage from './pages/settingsPage';
+import ForumPage from './pages/forumPage';
+import WhiteboardPage from './pages/whiteboardPage';
+import BookmarksPage from './pages/bookmarksPage';
+import LeaderboardPage from './pages/leaderboardPage';
 
 export default function App() {
   return (

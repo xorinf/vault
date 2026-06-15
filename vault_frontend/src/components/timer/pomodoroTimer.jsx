@@ -1,5 +1,5 @@
 import { Play, Pause, RotateCcw, Coffee, Brain, Sunset } from 'lucide-react';
-import Modal from '../ui/Modal';
+import Modal from '../ui/modal';
 import { usePomodoro } from '../../hooks/usePomodoro';
 import { formatTimer } from '../../utils/formatters';
 

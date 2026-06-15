@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, X, FileText, Image, StickyNote, Loader2 } from 'lucide-react';
-import { searchResources } from '../../api/resources.api';
+import { searchResources } from '../../api/resourcesApi';
 import { useDebounce } from '../../hooks/useDebounce';
 import { useAuth } from '../../hooks/useAuth';
-import Badge from '../ui/Badge';
+import Badge from '../ui/badge';
 import { formatRelativeTime } from '../../utils/formatters';
 
 const typeIcons = { PDF: FileText, IMAGE: Image, NOTE: StickyNote };

@@ -4,7 +4,7 @@ import { BookOpen, Mail, Lock, User, GraduationCap, Eye, EyeOff } from 'lucide-r
 import { useAuth } from '../hooks/useAuth';
 import { useToast } from '../hooks/useToast';
 import { validateEmail, validatePassword, validateUsername } from '../utils/validators';
-import Spinner from '../components/ui/Spinner';
+import Spinner from '../components/ui/spinner';
 
 export default function RegisterPage() {
   const [form, setForm] = useState({

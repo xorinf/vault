@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Upload, FileText, Image as ImageIcon, StickyNote, X, Plus } from 'lucide-react';
-import PageWrapper from '../components/layout/PageWrapper';
-import Spinner from '../components/ui/Spinner';
-import { uploadResource } from '../api/resources.api';
+import PageWrapper from '../components/layout/pageWrapper';
+import Spinner from '../components/ui/spinner';
+import { uploadResource } from '../api/resourcesApi';
 import { useAuth } from '../hooks/useAuth';
 import { useToast } from '../hooks/useToast';
 import { SUBJECTS, SEMESTERS } from '../utils/constants';

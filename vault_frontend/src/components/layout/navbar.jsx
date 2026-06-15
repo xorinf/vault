@@ -5,9 +5,9 @@ import {
   User, Shield, Timer, ChevronDown, LayoutDashboard
 } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
-import Avatar from '../ui/Avatar';
-import SearchPanel from '../search/SearchPanel';
-import PomodoroTimer from '../timer/PomodoroTimer';
+import Avatar from '../ui/avatar';
+import SearchPanel from '../search/searchPanel';
+import PomodoroTimer from '../timer/pomodoroTimer';
 
 export default function Navbar() {
   const { user, isAuthenticated, isAdmin, logout } = useAuth();

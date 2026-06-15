@@ -4,12 +4,12 @@ import {
   ArrowLeft, Eye, Calendar, Tag, FileText, Image as ImageIcon,
   StickyNote, ExternalLink, Download, MessageSquare, Send
 } from 'lucide-react';
-import PageWrapper from '../components/layout/PageWrapper';
-import VoteWidget from '../components/resources/VoteWidget';
-import Badge from '../components/ui/Badge';
-import Avatar from '../components/ui/Avatar';
-import Spinner from '../components/ui/Spinner';
-import { getResource, addComment } from '../api/resources.api';
+import PageWrapper from '../components/layout/pageWrapper';
+import VoteWidget from '../components/resources/voteWidget';
+import Badge from '../components/ui/badge';
+import Avatar from '../components/ui/avatar';
+import Spinner from '../components/ui/spinner';
+import { getResource, addComment } from '../api/resourcesApi';
 import { useAuth } from '../hooks/useAuth';
 import { useVote } from '../hooks/useVote';
 import { useToast } from '../hooks/useToast';

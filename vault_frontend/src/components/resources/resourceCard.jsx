@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Eye, ThumbsUp, ThumbsDown, MessageSquare, FileText, Image, StickyNote } from 'lucide-react';
-import Badge from '../ui/Badge';
-import Avatar from '../ui/Avatar';
+import Badge from '../ui/badge';
+import Avatar from '../ui/avatar';
 import { formatRelativeTime, truncate, formatScore } from '../../utils/formatters';
 
 const typeIcons = {

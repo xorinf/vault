@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Shield, Search, ToggleLeft, ToggleRight, Eye } from 'lucide-react';
-import PageWrapper from '../components/layout/PageWrapper';
-import Badge from '../components/ui/Badge';
-import Avatar from '../components/ui/Avatar';
-import Spinner from '../components/ui/Spinner';
-import { getAllResources, toggleResourceStatus } from '../api/resources.api';
+import PageWrapper from '../components/layout/pageWrapper';
+import Badge from '../components/ui/badge';
+import Avatar from '../components/ui/avatar';
+import Spinner from '../components/ui/spinner';
+import { getAllResources, toggleResourceStatus } from '../api/resourcesApi';
 import { useAuth } from '../hooks/useAuth';
 import { useToast } from '../hooks/useToast';
 import { formatDate, formatRelativeTime } from '../utils/formatters';

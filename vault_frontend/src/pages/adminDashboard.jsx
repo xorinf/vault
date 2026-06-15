@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Shield, Users, BookOpen, BarChart3, ArrowRight } from 'lucide-react';
-import PageWrapper from '../components/layout/PageWrapper';
-import Spinner from '../components/ui/Spinner';
+import PageWrapper from '../components/layout/pageWrapper';
+import Spinner from '../components/ui/spinner';
 import { useAuth } from '../hooks/useAuth';
-import { getAllResources, getUsers } from '../api/resources.api';
+import { getAllResources, getUsers } from '../api/resourcesApi';
 
 export default function AdminDashboard() {
   const { isAdmin, isAuthenticated } = useAuth();

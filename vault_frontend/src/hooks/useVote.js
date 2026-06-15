@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { vote as castVote, removeVote } from '../api/resources.api';
+import { vote as castVote, removeVote } from '../api/resourcesApi';
 import { useToast } from './useToast';
 
 /**
