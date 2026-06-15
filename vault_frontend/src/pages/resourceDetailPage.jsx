@@ -9,11 +9,11 @@ import VoteWidget from '../components/resources/voteWidget';
 import Badge from '../components/ui/badge';
 import Avatar from '../components/ui/avatar';
 import Spinner from '../components/ui/spinner';
-import { getResource, addComment } from '../api/resourcesApi';
+import { getResource, addComment, editComment, deleteComment } from '../api/resourcesApi';
 import { useAuth } from '../hooks/useAuth';
 import { useVote } from '../hooks/useVote';
 import { useToast } from '../hooks/useToast';
-import { formatDate, formatRelativeTime } from '../utils/formatters';
+import { formatDate } from '../utils/formatters';
 
 export default function ResourceDetailPage() {
   const { id } = useParams();
@@ -24,6 +24,8 @@ export default function ResourceDetailPage() {
   const [loading, setLoading] = useState(true);
   const [comment, setComment] = useState('');
   const [commenting, setCommenting] = useState(false);
+  const [editingCommentId, setEditingCommentId] = useState(null);
+  const [editText, setEditText] = useState('');
   const { score, userVote, handleVote, setScore } = useVote(id, 0, null);
 
   useEffect(() => {
@@ -60,6 +62,35 @@ export default function ResourceDetailPage() {
     }
   };
 
+  const handleDeleteComment = async (commentId) => {
+    if (!window.confirm('Are you sure you want to delete this comment?')) return;
+    try {
+      const data = await deleteComment(resource._id, commentId);
+      setResource(data.payload);
+      showToast('Comment deleted!', 'success');
+    } catch {
+      showToast('Failed to delete comment', 'error');
+    }
+  };
+
+  const handleEditClick = (commentId, text) => {
+    setEditingCommentId(commentId);
+    setEditText(text);
+  };
+
+  const handleSaveEdit = async (commentId) => {
+    if (!editText.trim()) return;
+    try {
+      const data = await editComment(resource._id, commentId, editText.trim());
+      setResource(data.payload);
+      setEditingCommentId(null);
+      setEditText('');
+      showToast('Comment updated!', 'success');
+    } catch {
+      showToast('Failed to update comment', 'error');
+    }
+  };
+
   if (loading) {
     return (
       <PageWrapper>
@@ -79,7 +110,7 @@ export default function ResourceDetailPage() {
       {/* Back button */}
       <button
         onClick={() => navigate(-1)}
-        className="flex items-center gap-1.5 text-sm text-muted hover:text-heading mb-6 transition-colors"
+        className="flex items-center gap-1.5 text-sm text-muted hover:text-heading mb-6 transition-colors bg-transparent border-0 cursor-pointer"
       >
         <ArrowLeft size={16} />
         Back
@@ -167,18 +198,12 @@ export default function ResourceDetailPage() {
                 />
               )}
               {isPDF && resource.fileUrl && (
-                <div className="flex flex-col items-center py-8">
-                  <FileText size={48} className="text-muted mb-3" />
-                  <p className="text-sm text-muted mb-4">PDF Document</p>
-                  <a
-                    href={resource.fileUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-lg text-sm font-medium hover:bg-heading transition-colors"
-                  >
-                    <Download size={16} />
-                    View PDF
-                  </a>
+                <div className="w-full h-[600px] border border-border rounded-lg overflow-hidden bg-neutral-100">
+                  <iframe
+                    src={resource.fileUrl}
+                    title={resource.title}
+                    className="w-full h-full border-0"
+                  />
                 </div>
               )}
               {isNote && (
@@ -219,7 +244,7 @@ export default function ResourceDetailPage() {
                   <button
                     type="submit"
                     disabled={commenting || !comment.trim()}
-                    className="px-3 py-2 bg-accent text-white rounded-lg hover:bg-heading transition-colors disabled:opacity-50"
+                    className="px-3 py-2 bg-accent text-white rounded-lg hover:bg-neutral-800 transition-colors disabled:opacity-50 border-0 cursor-pointer"
                     aria-label="Submit comment"
                   >
                     <Send size={16} />
@@ -235,17 +260,62 @@ export default function ResourceDetailPage() {
                   No comments yet. Be the first to comment!
                 </div>
               )}
-              {resource.comments?.map((c, i) => (
-                <div key={c._id || i} className="px-8 py-5 flex gap-4">
-                  <Avatar src={c.user?.avatar} name={c.user?.username} size="sm" />
-                  <div>
-                    <div className="flex items-center gap-2 mb-1">
-                      <span className="text-sm font-medium text-heading">{c.user?.username || 'User'}</span>
+              {resource.comments?.map((c, i) => {
+                const commentUser = c.user;
+                const isCommentOwner = commentUser && (commentUser._id === user?.id || commentUser === user?.id);
+                const isEditing = editingCommentId === c._id;
+
+                return (
+                  <div key={c._id || i} className="px-8 py-5 flex gap-4 items-start">
+                    <Avatar src={commentUser?.avatar} name={commentUser?.username} size="sm" />
+                    <div className="flex-1 min-w-0">
+                      <div className="flex items-center justify-between gap-2 mb-1">
+                        <span className="text-sm font-medium text-heading">{commentUser?.username || 'User'}</span>
+                        {isCommentOwner && !isEditing && (
+                          <div className="flex items-center gap-2 text-xs">
+                            <button
+                              onClick={() => handleEditClick(c._id, c.comment)}
+                              className="text-muted hover:text-accent bg-transparent border-0 cursor-pointer"
+                            >
+                              Edit
+                            </button>
+                            <button
+                              onClick={() => handleDeleteComment(c._id)}
+                              className="text-muted hover:text-danger bg-transparent border-0 cursor-pointer"
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                      {isEditing ? (
+                        <div className="mt-2 flex gap-2">
+                          <input
+                            type="text"
+                            value={editText}
+                            onChange={(e) => setEditText(e.target.value)}
+                            className="flex-1 px-3 py-1.5 rounded-lg border border-border bg-bg text-sm outline-none focus:ring-2 focus:ring-accent"
+                          />
+                          <button
+                            onClick={() => handleSaveEdit(c._id)}
+                            className="px-3 py-1.5 bg-accent text-white rounded-lg text-xs font-medium hover:bg-neutral-800 border-0 cursor-pointer"
+                          >
+                            Save
+                          </button>
+                          <button
+                            onClick={() => setEditingCommentId(null)}
+                            className="px-3 py-1.5 border border-border text-heading bg-surface rounded-lg text-xs font-medium hover:bg-hover border-0 cursor-pointer"
+                          >
+                            Cancel
+                          </button>
+                        </div>
+                      ) : (
+                        <p className="text-sm text-text whitespace-pre-wrap">{c.comment}</p>
+                      )}
                     </div>
-                    <p className="text-sm text-text">{c.comment}</p>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>
@@ -295,3 +365,4 @@ export default function ResourceDetailPage() {
     </PageWrapper>
   );
 }
+

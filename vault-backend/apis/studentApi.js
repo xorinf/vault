@@ -65,8 +65,9 @@ studentAPP.put("/comment", async (request, response) => {
         const updatedResource = await resourceModel.findOneAndUpdate(
             { _id: resource_id, isResourceActive: true },
             { $push: { comments: newComment } },
-            { returnDocument: 'after' }
-        );
+            { new: true }
+        ).populate("author", "username avatar email")
+         .populate("comments.user", "username avatar");
 
         if (!updatedResource) {
             return response.status(404).json({ message: "Resource not found or not active" });
@@ -77,6 +78,77 @@ studentAPP.put("/comment", async (request, response) => {
         response.status(500).json({ message: "Server Error", error: err.message });
     }
 });
+
+/**
+ * Route: DELETE /comment/:resourceId/:commentId
+ * Description: Delete a comment from a specific active resource (owner only).
+ */
+studentAPP.delete("/comment/:resourceId/:commentId", async (request, response) => {
+    try {
+        const { resourceId, commentId } = request.params;
+        const resource = await resourceModel.findById(resourceId);
+        if (!resource) return response.status(404).json({ message: "Resource not found" });
+
+        // Find comment
+        const comment = resource.comments.id(commentId);
+        if (!comment) return response.status(404).json({ message: "Comment not found" });
+
+        // Verify owner
+        if (comment.user.toString() !== request.user.id) {
+            return response.status(401).json({ message: "Unauthorized to delete this comment!" });
+        }
+
+        // Remove comment
+        resource.comments.pull(commentId);
+        await resource.save();
+
+        const updatedResource = await resourceModel.findById(resourceId)
+            .populate("author", "username avatar email")
+            .populate("comments.user", "username avatar");
+
+        response.status(200).json({ message: "Comment deleted!", payload: updatedResource });
+    } catch (err) {
+        response.status(500).json({ message: "Server Error", error: err.message });
+    }
+});
+
+/**
+ * Route: PUT /comment/edit
+ * Description: Edit a comment's text on a specific active resource (owner only).
+ */
+studentAPP.put("/comment/edit", async (request, response) => {
+    try {
+        const { resourceId, commentId, comment: commentText } = request.body;
+        if (!commentText || !commentText.trim()) {
+            return response.status(400).json({ message: "Comment content is required!" });
+        }
+
+        const resource = await resourceModel.findById(resourceId);
+        if (!resource) return response.status(404).json({ message: "Resource not found" });
+
+        // Find comment
+        const comment = resource.comments.id(commentId);
+        if (!comment) return response.status(404).json({ message: "Comment not found" });
+
+        // Verify owner
+        if (comment.user.toString() !== request.user.id) {
+            return response.status(401).json({ message: "Unauthorized to edit this comment!" });
+        }
+
+        // Update comment text
+        comment.comment = commentText.trim();
+        await resource.save();
+
+        const updatedResource = await resourceModel.findById(resourceId)
+            .populate("author", "username avatar email")
+            .populate("comments.user", "username avatar");
+
+        response.status(200).json({ message: "Comment updated!", payload: updatedResource });
+    } catch (err) {
+        response.status(500).json({ message: "Server Error", error: err.message });
+    }
+});
+
 
 /**
  * Route: POST /vote

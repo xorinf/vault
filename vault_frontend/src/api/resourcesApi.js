@@ -31,6 +31,32 @@ export async function addComment(resourceId, comment) {
 }
 
 /**
+ * Edit a comment.
+ * @param {string} resourceId
+ * @param {string} commentId
+ * @param {string} comment
+ */
+export async function editComment(resourceId, commentId, comment) {
+  const { data } = await api.put('/student-api/comment/edit', {
+    resourceId,
+    commentId,
+    comment,
+  });
+  return data;
+}
+
+/**
+ * Delete a comment.
+ * @param {string} resourceId
+ * @param {string} commentId
+ */
+export async function deleteComment(resourceId, commentId) {
+  const { data } = await api.delete(`/student-api/comment/${resourceId}/${commentId}`);
+  return data;
+}
+
+
+/**
  * Cast a vote on a resource.
  * @param {string} resourceId
  * @param {"UPVOTE"|"DOWNVOTE"} type

@@ -44,3 +44,15 @@ export async function changePassword(passwords) {
   const { data } = await api.put('/auth/password', passwords);
   return data;
 }
+
+/**
+ * Update user profile photo.
+ * @param {FormData} formData - Contains the file field 'avatar'
+ */
+export async function updateProfile(formData) {
+  const { data } = await api.put('/auth/profile', formData, {
+    headers: { 'Content-Type': 'multipart/form-data' },
+  });
+  return data;
+}
+

@@ -124,7 +124,44 @@ authAPP.post("/login", async (request, response) => {
 });
 
 /**
+ * Route: PUT /profile
+ * Description: Update user profile avatar (authenticated).
+ */
+authAPP.put("/profile", verifyToken("STUDENT", "ADMIN"), upload.single("avatar"), async (request, response, next) => {
+    let cloudinaryResult;
+    try {
+        if (!request.file) {
+            return response.status(400).json({ message: "No file uploaded!" });
+        }
+
+        cloudinaryResult = await uploadToCloudinary(request.file.buffer);
+        const avatarUrl = cloudinaryResult?.secure_url;
+
+        const updatedUser = await userModel.findByIdAndUpdate(
+            request.user.id,
+            { $set: { avatar: avatarUrl } },
+            { new: true, returnDocument: 'after' }
+        );
+
+        if (!updatedUser) {
+            return response.status(404).json({ message: "User not found!" });
+        }
+
+        let userObj = updatedUser.toObject();
+        delete userObj.password;
+
+        response.status(200).json({ message: "Profile updated successfully!", payload: userObj });
+    } catch (err) {
+        if (cloudinaryResult?.public_id) {
+            await cloudinary.uploader.destroy(cloudinaryResult.public_id);
+        }
+        next(err);
+    }
+});
+
+/**
  * Route: PUT /password
+
  * Description: Change password for any authenticated user.
  */
 authAPP.put("/password", verifyToken("STUDENT", "ADMIN"), async (request, response) => {

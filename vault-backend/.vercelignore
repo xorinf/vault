@@ -1,0 +1,8 @@
+node_modules
+.mongodata
+.env
+.vercel
+*.log
+.DS_Store
+coverage
+dist
