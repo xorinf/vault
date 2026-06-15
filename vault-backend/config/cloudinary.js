@@ -1,6 +1,12 @@
 import { v2 as cloudinary } from "cloudinary";
 import { config } from "dotenv";
-config({ path: "../.env" });
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+
+config({ path: join(__dirname, "../.env") });
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -9,3 +15,4 @@ cloudinary.config({
 });
 
 export default cloudinary;
+
