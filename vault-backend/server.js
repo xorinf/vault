@@ -13,15 +13,11 @@ config({ path: ".env", quiet: true }); // Vercel injects env vars directly; ".en
 const app = exp();
 
 //enable cors
-const allowedOrigins = ['http://localhost:5173', process.env.FRONTEND_URL];
 app.use(cors({
   origin: function (origin, callback) {
-     // Allow local dev, exact FRONTEND_URL matched, or ANY Vercel preview URL
-     if (!origin || allowedOrigins.includes(origin) || (origin && origin.endsWith('vercel.app'))) {
-       callback(null, true);
-     } else {
-       callback(new Error('Not allowed by CORS'));
-     }
+     // Allow all origins dynamically (reflects the request origin)
+     // This prevents any CORS mismatches with Vercel aliases or local IPs
+     callback(null, true);
   },
   credentials: true
 }));
