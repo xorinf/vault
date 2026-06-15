@@ -1,0 +1,23 @@
+### Admin Login
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "email": "admin@gmail.com",
+    "password": "admin"
+}
+
+### Admin Get All Users
+GET http://localhost:5000/resource-api/users
+
+### Admin Get All Resources (active + inactive)
+GET http://localhost:5000/resource-api/all-resources
+
+### Admin Toggle User Status
+PATCH http://localhost:5000/resource-api/users/status/USER_ID_HERE
+
+### Admin Toggle Resource Status
+PATCH http://localhost:5000/resource-api/resources/status/RESOURCE_ID_HERE
+
+### Logout Admin
+GET http://localhost:5000/auth/logout

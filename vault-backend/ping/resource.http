@@ -1,0 +1,38 @@
+### Create Resource (with JSON, no file)
+POST http://localhost:5000/resource-api/resource
+Cookie: token=YOUR_TOKEN_HERE
+Content-Type: application/json
+
+{
+    "author" : "YOUR_USER_ID_HERE",
+    "title" : "Calculus Chapter 1 Notes",
+    "description" : "Complete notes covering limits and continuity",
+    "content" : "Limits describe the value a function approaches...",
+    "fileType" : "NOTE",
+    "subject" : "Mathematics",
+    "semester" : 3,
+    "tags" : ["calculus", "limits"]
+}
+
+### Get Own Resources
+GET http://localhost:5000/resource-api/resources
+
+### Get Resource by ID
+GET http://localhost:5000/resource-api/resource/RESOURCE_ID_HERE
+
+### Update Resource
+PUT http://localhost:5000/resource-api/resource
+Cookie: token=YOUR_TOKEN_HERE
+Content-Type: application/json
+
+{
+    "_id" : "RESOURCE_ID_HERE",
+    "title" : "Calculus Chapter 1 Notes (Updated)",
+    "description" : "Updated notes covering limits, continuity, and derivatives"
+}
+
+### Soft Delete Resource
+PATCH http://localhost:5000/resource-api/resource/delete/RESOURCE_ID_HERE
+
+### Restore Resource
+PATCH http://localhost:5000/resource-api/resource/restore/RESOURCE_ID_HERE

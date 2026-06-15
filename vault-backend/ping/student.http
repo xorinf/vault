@@ -1,0 +1,35 @@
+### Register Student
+POST http://localhost:5000/auth/register
+Content-Type: application/json
+
+{
+    "username" : "testuser",
+    "email" : "testuser@gmail.com",
+    "password" : "pass123",
+    "role" : "STUDENT",
+    "college" : "MIT"
+}
+
+### Login Student
+POST http://localhost:5000/auth/login
+Content-Type: application/json
+
+{
+    "email" : "testuser@gmail.com",
+    "password" : "pass123"
+}
+
+### Change Password
+PUT http://localhost:5000/auth/password
+Content-Type: application/json
+
+{
+    "current_pass" : "pass123",
+    "new_pass" : "newpass123"
+}
+
+### Check Auth
+GET http://localhost:5000/auth/check-auth
+
+### Logout
+GET http://localhost:5000/auth/logout
