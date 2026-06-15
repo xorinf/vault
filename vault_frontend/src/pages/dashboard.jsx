@@ -113,7 +113,7 @@ export default function Dashboard() {
             return (
               <div
                 key={feature.title}
-                className="group relative bg-surface rounded-xl border border-border p-8 hover:border-neutral-400 hover:shadow-card transition-all duration-200"
+                className="group relative bg-surface rounded-xl border border-border p-8 hover:border-neutral-400 transition-colors duration-150"
               >
                 {feature.badge && (
                   <span className="absolute top-4 right-4 px-2 py-0.5 bg-neutral-100 text-muted text-[9px] font-semibold border border-border rounded-md uppercase tracking-wider">

@@ -58,7 +58,7 @@ export default function LoginPage() {
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="bg-surface rounded-xl border border-border p-6 shadow-card space-y-4">
+        <form onSubmit={handleSubmit} className="bg-surface rounded-xl border border-border p-6 space-y-4">
           <div>
             <label htmlFor="login-email" className="block text-sm font-medium text-heading mb-1.5">
               Email
@@ -72,7 +72,7 @@ export default function LoginPage() {
                 value={form.email}
                 onChange={handleChange}
                 placeholder="you@college.edu"
-                className={`w-full pl-10 pr-4 py-2.5 rounded-lg border text-sm bg-bg placeholder:text-muted focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all ${
+                className={`w-full pl-10 pr-4 py-2.5 rounded-lg border text-sm bg-bg placeholder:text-muted focus:border-accent focus:ring-1 focus:ring-accent/15 outline-none transition-all ${
                   errors.email ? 'border-danger' : 'border-border'
                 }`}
               />
@@ -93,7 +93,7 @@ export default function LoginPage() {
                 value={form.password}
                 onChange={handleChange}
                 placeholder="••••••••"
-                className={`w-full pl-10 pr-10 py-2.5 rounded-lg border text-sm bg-bg placeholder:text-muted focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition-all ${
+                className={`w-full pl-10 pr-10 py-2.5 rounded-lg border text-sm bg-bg placeholder:text-muted focus:border-accent focus:ring-1 focus:ring-accent/15 outline-none transition-all ${
                   errors.password ? 'border-danger' : 'border-border'
                 }`}
               />

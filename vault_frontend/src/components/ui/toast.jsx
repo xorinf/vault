@@ -9,10 +9,17 @@ const icons = {
 };
 
 const styles = {
-  success: 'border-l-4 border-l-success bg-success/5',
-  error: 'border-l-4 border-l-danger bg-danger/5',
-  warning: 'border-l-4 border-l-warning bg-warning/5',
-  info: 'border-l-4 border-l-accent bg-accent/5',
+  success: 'border-neutral-200 bg-surface text-heading',
+  error: 'border-neutral-200 bg-surface text-heading',
+  warning: 'border-neutral-200 bg-surface text-heading',
+  info: 'border-neutral-200 bg-surface text-heading',
+};
+
+const iconColors = {
+  success: 'text-emerald-600',
+  error: 'text-rose-600',
+  warning: 'text-amber-500',
+  info: 'text-neutral-500',
 };
 
 export default function ToastContainer() {
@@ -27,9 +34,9 @@ export default function ToastContainer() {
         return (
           <div
             key={toast.id}
-            className={`flex items-start gap-3 px-4 py-3 bg-surface rounded-lg shadow-elevated animate-slide-up ${styles[toast.type] || styles.info}`}
+            className={`flex items-start gap-3 px-4 py-3 bg-surface rounded-xl shadow-modal border ${styles[toast.type] || styles.info} animate-slide-up`}
           >
-            <Icon size={18} className="mt-0.5 shrink-0" />
+            <Icon size={18} className={`mt-0.5 shrink-0 ${iconColors[toast.type] || iconColors.info}`} />
             <p className="text-sm text-text flex-1">{toast.message}</p>
             <button
               onClick={() => dismissToast(toast.id)}

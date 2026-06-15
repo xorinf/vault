@@ -19,7 +19,7 @@ export default function ResourceCard({ resource }) {
   return (
     <Link
       to={`/resource/${resource._id}`}
-      className="group block bg-surface rounded-xl border border-border hover:border-accent/30 hover:shadow-card transition-all duration-200"
+      className="group block bg-surface rounded-xl border border-border hover:border-neutral-400 transition-colors duration-150"
     >
       {/* Card Header with file type indicator */}
       <div className="px-5 pt-5 pb-3">

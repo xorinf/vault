@@ -5,8 +5,8 @@ import { formatTimer } from '../../utils/formatters';
 
 const modeConfig = {
   work: { label: 'Focus', icon: Brain, color: 'bg-accent' },
-  shortBreak: { label: 'Short Break', icon: Coffee, color: 'bg-success' },
-  longBreak: { label: 'Long Break', icon: Sunset, color: 'bg-warning' },
+  shortBreak: { label: 'Short Break', icon: Coffee, color: 'bg-accent' },
+  longBreak: { label: 'Long Break', icon: Sunset, color: 'bg-accent' },
 };
 
 /**

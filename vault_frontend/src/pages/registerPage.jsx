@@ -68,7 +68,7 @@ export default function RegisterPage() {
           <p className="text-sm text-muted mt-1">Join Study Vault and start sharing resources</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-surface rounded-xl border border-border p-6 shadow-card space-y-4">
+        <form onSubmit={handleSubmit} className="bg-surface rounded-xl border border-border p-6 space-y-4">
           <div>
             <label htmlFor="reg-username" className="block text-sm font-medium text-heading mb-1.5">Username</label>
             <div className="relative">
@@ -76,7 +76,7 @@ export default function RegisterPage() {
               <input
                 id="reg-username" name="username" type="text" value={form.username} onChange={handleChange}
                 placeholder="johndoe"
-                className={`w-full pl-10 pr-4 py-2.5 rounded-lg border text-sm bg-bg placeholder:text-muted focus:ring-2 focus:ring-accent focus:border-transparent outline-none ${errors.username ? 'border-danger' : 'border-border'}`}
+                className={`w-full pl-10 pr-4 py-2.5 rounded-lg border text-sm bg-bg placeholder:text-muted focus:border-accent focus:ring-1 focus:ring-accent/15 outline-none ${errors.username ? 'border-danger' : 'border-border'}`}
               />
             </div>
             {errors.username && <p className="text-xs text-danger mt-1">{errors.username}</p>}
@@ -89,7 +89,7 @@ export default function RegisterPage() {
               <input
                 id="reg-email" name="email" type="email" value={form.email} onChange={handleChange}
                 placeholder="you@college.edu"
-                className={`w-full pl-10 pr-4 py-2.5 rounded-lg border text-sm bg-bg placeholder:text-muted focus:ring-2 focus:ring-accent focus:border-transparent outline-none ${errors.email ? 'border-danger' : 'border-border'}`}
+                className={`w-full pl-10 pr-4 py-2.5 rounded-lg border text-sm bg-bg placeholder:text-muted focus:border-accent focus:ring-1 focus:ring-accent/15 outline-none ${errors.email ? 'border-danger' : 'border-border'}`}
               />
             </div>
             {errors.email && <p className="text-xs text-danger mt-1">{errors.email}</p>}
@@ -102,7 +102,7 @@ export default function RegisterPage() {
               <input
                 id="reg-college" name="college" type="text" value={form.college} onChange={handleChange}
                 placeholder="Your college name"
-                className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-border text-sm bg-bg placeholder:text-muted focus:ring-2 focus:ring-accent focus:border-transparent outline-none"
+                className="w-full pl-10 pr-4 py-2.5 rounded-lg border border-border text-sm bg-bg placeholder:text-muted focus:border-accent focus:ring-1 focus:ring-accent/15 outline-none"
               />
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function RegisterPage() {
               <input
                 id="reg-password" name="password" type={showPassword ? 'text' : 'password'} value={form.password} onChange={handleChange}
                 placeholder="At least 6 characters"
-                className={`w-full pl-10 pr-10 py-2.5 rounded-lg border text-sm bg-bg placeholder:text-muted focus:ring-2 focus:ring-accent focus:border-transparent outline-none ${errors.password ? 'border-danger' : 'border-border'}`}
+                className={`w-full pl-10 pr-10 py-2.5 rounded-lg border text-sm bg-bg placeholder:text-muted focus:border-accent focus:ring-1 focus:ring-accent/15 outline-none ${errors.password ? 'border-danger' : 'border-border'}`}
               />
               <button type="button" onClick={() => setShowPassword(!showPassword)}
                 className="absolute right-3 top-1/2 -translate-y-1/2 text-muted hover:text-heading" aria-label="Toggle password">
@@ -131,7 +131,7 @@ export default function RegisterPage() {
               <input
                 id="reg-confirm" name="confirmPassword" type="password" value={form.confirmPassword} onChange={handleChange}
                 placeholder="Re-enter password"
-                className={`w-full pl-10 pr-4 py-2.5 rounded-lg border text-sm bg-bg placeholder:text-muted focus:ring-2 focus:ring-accent focus:border-transparent outline-none ${errors.confirmPassword ? 'border-danger' : 'border-border'}`}
+                className={`w-full pl-10 pr-4 py-2.5 rounded-lg border text-sm bg-bg placeholder:text-muted focus:border-accent focus:ring-1 focus:ring-accent/15 outline-none ${errors.confirmPassword ? 'border-danger' : 'border-border'}`}
               />
             </div>
             {errors.confirmPassword && <p className="text-xs text-danger mt-1">{errors.confirmPassword}</p>}

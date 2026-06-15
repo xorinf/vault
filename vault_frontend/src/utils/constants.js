@@ -1,8 +1,8 @@
 /** File type display configs */
 export const FILE_TYPES = {
-  PDF: { label: 'PDF', color: '#DC2626', icon: 'FileText' },
-  IMAGE: { label: 'Image', color: '#2563EB', icon: 'Image' },
-  NOTE: { label: 'Note', color: '#16A34A', icon: 'StickyNote' },
+  PDF: { label: 'PDF', color: '#111827', icon: 'FileText' },
+  IMAGE: { label: 'Image', color: '#4B5563', icon: 'Image' },
+  NOTE: { label: 'Note', color: '#8E8E93', icon: 'StickyNote' },
 };
 
 /** Sort options for resource lists */
