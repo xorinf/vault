@@ -1,0 +1,131 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Settings, Lock, Eye, EyeOff } from 'lucide-react';
+import PageWrapper from '../components/layout/PageWrapper';
+import Spinner from '../components/ui/Spinner';
+import { changePassword } from '../api/auth.api';
+import { useAuth } from '../hooks/useAuth';
+import { useToast } from '../hooks/useToast';
+
+export default function SettingsPage() {
+  const { isAuthenticated, user } = useAuth();
+  const { showToast } = useToast();
+  const navigate = useNavigate();
+  const [form, setForm] = useState({ current_pass: '', new_pass: '', confirmNew: '' });
+  const [showPasswords, setShowPasswords] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [errors, setErrors] = useState({});
+
+  if (!isAuthenticated) { navigate('/login'); return null; }
+
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+    setErrors({ ...errors, [e.target.name]: null });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const newErrors = {};
+    if (!form.current_pass) newErrors.current_pass = 'Current password is required';
+    if (!form.new_pass || form.new_pass.length < 6) newErrors.new_pass = 'New password must be at least 6 characters';
+    if (form.new_pass !== form.confirmNew) newErrors.confirmNew = 'Passwords do not match';
+    if (Object.keys(newErrors).length > 0) { setErrors(newErrors); return; }
+
+    setSubmitting(true);
+    try {
+      await changePassword({ current_pass: form.current_pass, new_pass: form.new_pass });
+      showToast('Password changed successfully!', 'success');
+      setForm({ current_pass: '', new_pass: '', confirmNew: '' });
+    } catch (err) {
+      showToast(err.response?.data?.message || 'Failed to change password', 'error');
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <PageWrapper className="max-w-xl mx-auto">
+      <div className="flex items-center gap-2 mb-8">
+        <Settings size={20} className="text-accent" />
+        <h1 className="text-2xl font-bold text-heading">Settings</h1>
+      </div>
+
+      {/* Profile Info */}
+      <div className="bg-surface rounded-xl border border-border p-6 mb-6">
+        <h2 className="text-sm font-semibold text-heading mb-4">Profile</h2>
+        <div className="space-y-3 text-sm">
+          <div className="flex justify-between">
+            <span className="text-muted">Username</span>
+            <span className="text-heading font-medium">{user?.username}</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-muted">Email</span>
+            <span className="text-heading">{user?.email}</span>
+          </div>
+          <div className="flex justify-between">
+            <span className="text-muted">Role</span>
+            <span className="text-heading capitalize">{user?.role?.toLowerCase()}</span>
+          </div>
+          {user?.college && (
+            <div className="flex justify-between">
+              <span className="text-muted">College</span>
+              <span className="text-heading">{user.college}</span>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Change Password */}
+      <div className="bg-surface rounded-xl border border-border p-6">
+        <h2 className="text-sm font-semibold text-heading mb-4">Change Password</h2>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {[
+            { name: 'current_pass', label: 'Current Password', placeholder: 'Enter current password' },
+            { name: 'new_pass', label: 'New Password', placeholder: 'At least 6 characters' },
+            { name: 'confirmNew', label: 'Confirm New Password', placeholder: 'Re-enter new password' },
+          ].map((field) => (
+            <div key={field.name}>
+              <label htmlFor={`settings-${field.name}`} className="block text-sm font-medium text-heading mb-1.5">
+                {field.label}
+              </label>
+              <div className="relative">
+                <Lock size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted" />
+                <input
+                  id={`settings-${field.name}`}
+                  name={field.name}
+                  type={showPasswords ? 'text' : 'password'}
+                  value={form[field.name]}
+                  onChange={handleChange}
+                  placeholder={field.placeholder}
+                  className={`w-full pl-10 pr-10 py-2.5 rounded-lg border text-sm bg-bg placeholder:text-muted focus:ring-2 focus:ring-accent outline-none ${
+                    errors[field.name] ? 'border-danger' : 'border-border'
+                  }`}
+                />
+              </div>
+              {errors[field.name] && <p className="text-xs text-danger mt-1">{errors[field.name]}</p>}
+            </div>
+          ))}
+
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setShowPasswords(!showPasswords)}
+              className="text-xs text-muted hover:text-heading flex items-center gap-1"
+            >
+              {showPasswords ? <EyeOff size={12} /> : <Eye size={12} />}
+              {showPasswords ? 'Hide' : 'Show'} passwords
+            </button>
+          </div>
+
+          <button
+            type="submit"
+            disabled={submitting}
+            className="w-full py-2.5 bg-accent text-white rounded-lg text-sm font-semibold hover:bg-heading transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
+          >
+            {submitting ? <Spinner size={18} /> : 'Update Password'}
+          </button>
+        </form>
+      </div>
+    </PageWrapper>
+  );
+}
